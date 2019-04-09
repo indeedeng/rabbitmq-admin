@@ -1,4 +1,7 @@
 # rabbitmq-admin
+
+![NetflixOSS Lifecycle](https://img.shields.io/osslifecycle/indeedeng/rabbitmq-admin.svg)
+
 A lightweight library used to communicate with the RabbitMQ Management API.
 
 # Code of Conduct
