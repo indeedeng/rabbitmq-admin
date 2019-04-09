@@ -1,0 +1,48 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "vhost": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "durable": {
+      "type": "boolean"
+    },
+    "auto_delete": {
+      "type": "boolean"
+    },
+    "internal": {
+      "type": "boolean"
+    },
+    "message_stats": {
+      "type": "object",
+      "javaType":"com.indeed.rabbitmq.admin.pojo.ExchangeStatistics",
+      "properties": {
+        "confirm": {
+          "type": "integer"
+        },
+        "confirm_details": {
+          "$ref": "Details.json"
+        },
+        "publish_in": {
+          "type": "integer"
+        },
+        "publish_in_details": {
+          "$ref": "Details.json"
+        },
+        "publish_out": {
+          "type": "integer"
+        },
+        "publish_out_details": {
+          "$ref": "Details.json"
+        }
+      }
+    },
+    "arguments": {}
+  }
+}

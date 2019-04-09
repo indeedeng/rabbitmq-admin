@@ -1,0 +1,113 @@
+{
+  "type": "object",
+  "properties":     {
+    "name": {
+      "type": "string"
+    },
+    "node": {
+      "type": "string"
+    },
+    "vhost": {
+      "type": "string"
+    },
+    "auto_delete": {
+      "type": "boolean"
+    },
+    "durable": {
+      "type": "boolean"
+    },
+    "policy": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "exclusive_consumer_tag": {
+      "type": "string"
+    },
+    "consumers": {
+      "type": "integer"
+    },
+    "memory": {
+      "type": "integer"
+    },
+    "consumer_utilisation": {
+      "type": "string"
+    },
+    "down_slave_nodes": {
+      "type": "string"
+    },
+    "messages": {
+      "type": "integer"
+    },
+    "messages_details": {
+      "$ref": "Details.json"
+    },
+    "messages_ram": {
+      "type": "integer"
+    },
+    "message_bytes": {
+      "type": "integer"
+    },
+    "message_bytes_ram": {
+      "type": "integer"
+    },
+    "messages_ready": {
+      "type": "integer"
+    },
+    "messages_ready_details": {
+      "$ref": "Details.json"
+    },
+    "message_bytes_ready": {
+      "type": "integer"
+    },
+    "messages_ready_ram": {
+      "type": "integer"
+    },
+    "messages_unacknowledged": {
+      "type": "integer"
+    },
+    "messages_unacknowledged_details": {
+      "$ref": "Details.json"
+    },
+    "message_bytes_unacknowledged": {
+      "type": "integer"
+    },
+    "messages_unacknowledged_ram": {
+      "type": "integer"
+    },
+    "messages_persistent": {
+      "type": "integer"
+    },
+    "message_bytes_persistent": {
+      "type": "integer"
+    },
+    "idle_since": {
+      "type": "string"
+    },
+    "arguments": {
+      "type": "object",
+      "javaType":"com.indeed.rabbitmq.admin.pojo.QueueArguments",
+      "properties": {
+        "x-message-ttl": {
+          "type": "integer"
+        },
+        "x-expires": {
+          "type": "integer"
+        },
+        "x-max-length": {
+          "type": "integer"
+        },
+        "x-max-length-bytes": {
+          "type": "integer"
+        },
+        "x-dead-letter-exchange": {
+          "type": "string"
+        },
+        "x-dead-letter-routing-key": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

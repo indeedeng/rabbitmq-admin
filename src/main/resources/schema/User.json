@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "description": "A description of a RabbitMQ user account.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The user name."
+    },
+    "password": {
+      "type": "string",
+      "description": "The user password in plain text."
+    },
+    "password_hash": {
+      "type": "string",
+      "description": "A hashed representation of the user password."
+    },
+    "hashing_algorithm": {
+      "type": "string",
+      "description": "The hashing algorithm."
+    },
+    "tags": {
+      "type": "string",
+      "description": "Tags associated with this user."
+    }
+  }
+}

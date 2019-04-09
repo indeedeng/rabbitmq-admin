@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "description": "Rates and counts of incoming, delivered and published messages.",
+  "javaType":"com.indeed.rabbitmq.admin.pojo.MessageStatistics",
+  "properties": {
+    "ack": {
+      "type": "integer"
+    },
+    "ack_details": {
+      "$ref": "Details.json"
+    },
+    "confirm": {
+      "type": "integer"
+    },
+    "confirm_details": {
+      "$ref": "Details.json"
+    },
+    "deliver": {
+      "type": "integer"
+    },
+    "deliver_details": {
+      "$ref": "Details.json"
+    },
+    "deliver_get": {
+      "type": "integer"
+    },
+    "deliver_get_details": {
+      "$ref": "Details.json"
+    },
+    "publish": {
+      "type": "integer"
+    },
+    "publish_details": {
+      "$ref": "Details.json"
+    },
+    "redeliver": {
+      "type": "integer"
+    },
+    "redeliver_details": {
+      "$ref": "Details.json"
+    }
+  }
+}

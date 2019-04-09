@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "description": "Description of a RabbitMQ authentication mechanism or exchange entity.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The entity name."
+    },
+    "description": {
+      "type": "string",
+      "description": "The entity description."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Indicates whether this entity is enabled or not."
+    }
+  }
+}

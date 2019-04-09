@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "description": "Describes a RabbitMQ policy on a set of exchanges or queues.",
+  "properties": {
+    "vhost": {
+      "type": "string",
+      "description": "The virtual host that contains this policy."
+    },
+    "name": {
+      "type": "string",
+      "description": "The unique name of this policy."
+    },
+    "pattern": {
+      "type": "string",
+      "format": "regex",
+      "description": "A pattern that matches the RabbitMQ entities to which this policy applies."
+    },
+    "apply-to": {
+      "type": "string",
+      "enum": ["all", "exchanges", "queues"],
+      "description": "Indicates whether this policy applies to exchanges, queues or both."
+    },
+    "definition": {
+      "type": "object",
+      "description": "The definitions to apply to a RabbitMQ policy.",
+      "properties": {
+        "alternate-exchange": {
+          "type": "string",
+          "description": "If an exchange cannot route a message to any queue, that message is\nrerouted to the alternate exchange for routing.\nApplied to exchanges."
+        },
+        "dead-letter-exchange": {
+          "type": "string",
+          "title": "Route dead letter messages to this exchange.",
+          "description": "Messages are considered dead if the message expires, it is rejected (via\nnack) or if a queue length limit would be exceeded.\nApplied to queues."
+        },
+        "dead-letter-routing-key": {
+          "type": "string",
+          "description": "Modify the routing key of dead letter messages to this value.\nApplied to queues."
+        },
+        "expires": {
+          "type": "integer",
+          "description": "Remove queue if it remains unused for this number of milliseconds.\nApplied to queues."
+        },
+        "ha-mode": {
+          "type": "string",
+          "enum": ["all", "exactly", "nodes"],
+          "description": "Indicates the nodes to which high availability queues are synchronized."
+        },
+        "ha-params": {
+          "type": "integer",
+          "description": "Indicates the nodes to which high availability queues are synchronized."
+        },
+        "ha-promote-on-shutdown": {
+          "type": "string",
+          "enum": ["when-synced", "always"],
+          "description": "Set to \"always\" to prefer that master nodes fail over to\nunsynchronized slaves in all circumstances (i.e., availability over\nmessage lost avoidance).\nApplied to queues."
+        },
+        "ha-sync-batch-size": {
+          "type": "integer",
+          "description": "If queue is automatically synchronized then this argument indicates\nthe number of messages for batch synchronization.\nApplied to queues."
+        },
+        "ha-sync-mode": {
+          "type": "string",
+          "enum": ["automatic", "manual"],
+          "description": "Indicates how queue synchronization is controlled.\nIf \"manual\" then the queue must be synchronized via this admin API.\nApplied to queues."
+        },
+        "max-length": {
+          "type": "integer",
+          "description": "Maximum number of messages in a queue.\nApplied to queues."
+        },
+        "max-length-bytes": {
+          "type": "integer",
+          "description": "Maximum number of bytes in a queue.\nApplied to queues."
+        },
+        "message-ttl": {
+          "type": "integer",
+          "title": "Remove message if it remains in the queue for this number of milliseconds.",
+          "description": "Sets the TTL on messages in a queue. Policy must be attached to a queue.\nThese messages are routed as dead letter messages after expiration.\nApplied to queues."
+        },
+        "queue-master-locator": {
+          "type": "string",
+          "enum": ["min-masters", "client-local", "random"],
+          "description": "Indicates how to elect the queue home node.\nApplied to queues."
+        }
+      }
+    },
+    "priority": {
+      "type": "integer",
+      "description": "The policy priority level."
+    }
+  }
+}

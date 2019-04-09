@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "description": "Status for an aliveness test.",
+  "properties": {
+    "status": {
+      "type": "string"
+    }
+  }
+}

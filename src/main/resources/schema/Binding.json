@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "description": "Describes an existing exchange-to-exchange or exchange-to-queue binding.",
+  "properties": {
+    "source": {
+      "type": "string",
+      "description": "The name of the source from which messages are routed.\nWill be the name of an exchange."
+    },
+    "vhost": {
+      "type": "string",
+      "description": "The virtual host to which this binding belongs."
+    },
+    "destination": {
+      "type": "string",
+      "description": "The name of the destination to which messages are routed.\nMay be the name of an exchange or a queue."
+    },
+    "destination_type": {
+      "type": "string",
+      "enum": [
+        "exchange",
+        "queue"
+      ],
+      "description": "The RabbitMQ entity type of the destination."
+    },
+    "routing_key": {
+      "type": "string",
+      "description": "The binding key to match against the message routing key to determine if this binding takes effect."
+    },
+    "arguments": {
+      "type": "object",
+      "javaType": "java.util.Map<String, Object>",
+      "description": "Additional arguments that may apply to this binding."
+    },
+    "properties_key": {
+      "type": "string",
+      "description": "The properties key used to uniquely identify this binding for API calls."
+    }
+  }
+}

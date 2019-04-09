@@ -1,0 +1,205 @@
+{
+  "type": "object",
+  "description": "Describes a node in the RabbitMQ cluster.",
+  "properties": {
+    "cluster_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "disk_free": {
+      "type": "integer"
+    },
+    "disk_free_details": {
+      "$ref": "Details.json"
+    },
+    "fd_used": {
+      "type": "integer"
+    },
+    "fd_used_details": {
+      "$ref": "Details.json"
+    },
+    "io_read_avg_time": {
+      "type": "integer"
+    },
+    "io_read_avg_time_details": {
+      "$ref": "Details.json"
+    },
+    "io_read_bytes": {
+      "type": "integer"
+    },
+    "io_read_bytes_details": {
+      "$ref": "Details.json"
+    },
+    "io_read_count": {
+      "type": "integer"
+    },
+    "io_read_count_details": {
+      "$ref": "Details.json"
+    },
+    "io_seek_count": {
+      "type": "integer"
+    },
+    "io_seek_count_details": {
+      "$ref": "Details.json"
+    },
+    "io_sync_avg_time": {
+      "type": "integer"
+    },
+    "io_sync_avg_time_details": {
+      "$ref": "Details.json"
+    },
+    "io_write_avg_time": {
+      "type": "integer"
+    },
+    "io_write_avg_time_details": {
+      "$ref": "Details.json"
+    },
+    "mem_used": {
+      "type": "integer"
+    },
+    "mem_used_details": {
+      "$ref": "Details.json"
+    },
+    "mnesia_disk_tx_count": {
+      "type": "integer"
+    },
+    "mnesia_disk_tx_count_details": {
+      "$ref": "Details.json"
+    },
+    "mnesia_ram_tx_count": {
+      "type": "integer"
+    },
+    "mnesia_ram_tx_count_details": {
+      "$ref": "Details.json"
+    },
+    "proc_used": {
+      "type": "integer"
+    },
+    "proc_used_details": {
+      "$ref": "Details.json"
+    },
+    "sockets_used": {
+      "type": "integer"
+    },
+    "sockets_used_details": {
+      "$ref": "Details.json"
+    },
+    "partitions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "os_pid": {
+      "type": "string"
+    },
+    "fd_total": {
+      "type": "integer"
+    },
+    "sockets_total": {
+      "type": "integer"
+    },
+    "mem_limit": {
+      "type": "integer"
+    },
+    "mem_alarm": {
+      "type": "boolean"
+    },
+    "disk_free_limit": {
+      "type": "integer"
+    },
+    "disk_free_alarm": {
+      "type": "boolean"
+    },
+    "proc_total": {
+      "type": "integer"
+    },
+    "rates_mode": {
+      "type": "string",
+      "enum": ["basic", "detailed", "none"]
+    },
+    "uptime": {
+      "type": "integer"
+    },
+    "run_queue": {
+      "type": "integer"
+    },
+    "processors": {
+      "type": "integer"
+    },
+    "exchange_types": {
+      "type": "array",
+      "items": {
+        "$ref": "Description.json"
+      }
+    },
+    "auth_mechanisms": {
+      "type": "array",
+      "items": {
+        "$ref": "Description.json"
+      }
+    },
+    "applications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A RabbitMQ server-side application.",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of a RabbitMQ application."
+          },
+          "description": {
+            "type": "string",
+            "description": "The application description."
+          },
+          "version": {
+            "type": "string",
+            "description": "The RabbitMQ application version number."
+          }
+        }
+      }
+    },
+    "contexts": {
+      "type": "array",
+      "items": {
+        "$ref": "Context.json"
+      }
+    },
+    "log_file": {
+      "type": "string"
+    },
+    "sasl_log_file": {
+      "type": "string"
+    },
+    "db_dir": {
+      "type": "string"
+    },
+    "config_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "net_ticktime": {
+      "type": "integer"
+    },
+    "enabled_plugins": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "running": {
+      "type": "boolean"
+    }
+  }
+}

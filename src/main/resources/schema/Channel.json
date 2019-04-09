@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "description": "Message flow statistics and other RabbitMQ channel metadata.",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "user": {
+      "type": "string"
+    },
+    "node": {
+      "type": "string"
+    },
+    "vhost": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "confirm": {
+      "type": "boolean"
+    },
+    "transactional": {
+      "type": "boolean"
+    },
+    "prefetch_count": {
+      "type": "integer"
+    },
+    "global_prefetch_count": {
+      "type": "integer"
+    },
+    "acks_uncommitted": {
+      "type": "integer"
+    },
+    "messages_unacknowledged": {
+      "type": "integer"
+    },
+    "messages_uncommitted": {
+      "type": "integer"
+    },
+    "messages_unconfirmed": {
+      "type": "integer"
+    },
+    "number": {
+      "type": "integer"
+    },
+    "consumer_count": {
+      "type": "integer"
+    },
+    "idle_since": {
+      "type": "string"
+    },
+    "connection_details": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "peer_host": {
+          "type": "string"
+        },
+        "peer_port": {
+          "type": "integer"
+        }
+      }
+    },
+    "message_stats": {
+      "$ref": "MessageStatistics.json"
+    }
+  }
+}

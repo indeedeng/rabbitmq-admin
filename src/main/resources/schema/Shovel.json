@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "description": "Defines a dynamic shovel. See https://www.rabbitmq.com/shovel-dynamic.html.",
+  "properties": {
+    "vhost": {
+      "type": "string",
+      "description": "The virtual host that contains this dynamic shovel."
+    },
+    "component": {
+      "type": "string",
+      "description": "This field will always contain \"shovel\"."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the dynamic shovel."
+    },
+    "value": {
+      "type": "object",
+      "description": "The shovel declaration.",
+      "javaType": "com.indeed.rabbitmq.admin.pojo.ShovelArguments",
+      "properties": {
+        "src-uri": {
+          "type": "array",
+          "description": "The AMQP URIs for the source RabbitMQ services.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "src-queue": {
+          "type": "string",
+          "description": "The queue to consume.\nIf defined then \"src-exchange\" must be undefined."
+        },
+        "src-exchange": {
+          "type": "string",
+          "description": "The exchange to consume.\nIf defined then \"src-queue\" must be undefined."
+        },
+        "src-exchange-key": {
+          "type": "string",
+          "description": "The routing key when using \"src-exchange\"."
+        },
+        "dest-uri": {
+          "type": "array",
+          "description": "The AMQP URIs for the destination RabbitMQ services.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dest-queue": {
+          "type": "string",
+          "description": "The queue to which messages should be published.\nIf defined then \"dest-exchange\" must be undefined."
+        },
+        "dest-exchange": {
+          "type": "string",
+          "description": "The exchange to which message should be published.\nIf defined then \"dest-queue\" must be undefined."
+        },
+        "dest-exchange-key": {
+          "type": "string",
+          "description": "The routing key to use when using \"dest-exchange\".\nIf undefined the routing key on the original message is used."
+        },
+        "prefetch-count": {
+          "type": "integer",
+          "description": "The maximum number of unconfirmed messages to copy over this shovel."
+        },
+        "reconnect-delay": {
+          "type": "integer",
+          "description": "The duration, in seconds, to wait to reconnect to a broker after being disconnected."
+        },
+        "add-forward-headers": {
+          "type": "boolean",
+          "description": "If true then add \"x-shovelled\" headers to each shovelled message."
+        },
+        "ack-mode": {
+          "type": "string",
+          "description": "Determines how the shovel should acknowledge messages.",
+          "enum": ["on-confirm", "on-publish", "no-ack"]
+        },
+        "delete-after": {
+          "type": "string",
+          "description": "Determines when (if ever) the shovel should delete itself.\nIf \"never\" then the shovel will never delete itself.\nIf \"queue-length\" the shovel transfers the number of\nmessages that existed in the queue when it started up.\nAn integer indicates the number of messages to transfer."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "description": "Definition of a binding to create from an exchange to an exchange or queue.",
+  "properties": {
+    "routing_key": {
+      "type": "string",
+      "title": "The binding key or binding pattern.",
+      "description": "How this value is applied to the message routing key is dependent on the type of the source exchange."
+    },
+    "arguments": {
+      "type": "object",
+      "javaType": "java.util.Map<String, Object>",
+      "description": "Additional arguments to apply to the binding being created."
+    }
+  }
+}

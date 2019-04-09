@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "description": "The name of a RabbitMQ cluster.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of this RabbitMQ cluster."
+    }
+  }
+}

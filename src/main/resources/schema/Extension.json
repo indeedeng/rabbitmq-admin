@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "description": "Describes a RabbitMQ extension.",
+  "properties": {
+    "javascript": {
+      "type": "string"
+    }
+  }
+}

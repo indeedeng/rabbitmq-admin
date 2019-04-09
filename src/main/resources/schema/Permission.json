@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "description": "Authorization rules for an authenticated user.",
+  "properties": {
+    "user": {
+      "type": "string",
+      "description": "The username."
+    },
+    "vhost": {
+      "type": "string",
+      "description": "The virtual host to which these permissions apply."
+    },
+    "configure": {
+      "type": "string",
+      "format": "regex",
+      "description": "A regular expression that matches RabbitMQ entities that the user can configure."
+    },
+    "read": {
+      "type": "string",
+      "format": "regex",
+      "description": "A regular expression that matches RabbitMQ entities that the user can read from."
+    },
+    "write": {
+      "type": "string",
+      "format": "regex",
+      "description": "A regular expression that matches RabbitMQ entities that the user can write to."
+    }
+  }
+}

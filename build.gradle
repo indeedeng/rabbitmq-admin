@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Third Party
+    compile 'com.squareup.retrofit:converter-jackson:1.9.0'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'commons-lang:commons-lang:2.6'
+
+    // Test Only
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.easymock:easymock:3.6'
+}

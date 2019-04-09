@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "description": "A context under which a RabbitMQ node is executing.",
+  "javaType": "com.indeed.rabbitmq.admin.pojo.Context",
+  "properties": {
+    "node": {
+      "type": "string",
+      "description": "The node to which this context applies."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of this context."
+    },
+    "path": {
+      "type": "string",
+      "description": "The context path."
+    },
+    "port": {
+      "type": "string",
+      "description": "The context port."
+    }
+  }
+}

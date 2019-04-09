@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "description": "Defines a parameter on a RabbitMQ component.",
+  "properties": {
+    "vhost": {
+      "type": "string",
+      "description": "The virtual host that contains this parameter."
+    },
+    "component": {
+      "type": "string",
+      "description": "The component to which this parameter applies."
+    },
+    "name": {
+      "type": "string",
+      "description": "The parameter name."
+    },
+    "value": {
+      "type": "object",
+      "javaType": "java.util.Map<String, Object>",
+      "description": "The parameter value represented as a Map."
+    }
+  }
+}

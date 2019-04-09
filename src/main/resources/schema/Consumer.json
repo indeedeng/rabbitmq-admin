@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "description": "Describes an active consumer of a RabbitMQ queue.",
+  "properties": {
+    "consumer_tag": {
+      "type": "string"
+    },
+    "exclusive": {
+      "type": "boolean"
+    },
+    "ack_required": {
+      "type": "boolean"
+    },
+    "prefetch_count": {
+      "type": "integer"
+    },
+    "channel_details": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "connection_name": {
+          "type": "string"
+        },
+        "peer_host": {
+          "type": "string"
+        },
+        "peer_port": {
+          "type": "integer"
+        },
+        "user": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer"
+        }
+      }
+    },
+    "queue": {
+      "type": "object",
+      "javaType": "com.indeed.rabbitmq.admin.pojo.QueueDetails",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "vhost": {
+          "type": "string"
+        }
+      }
+    },
+    "arguments": {
+      "type": "object",
+      "javaType": "java.util.Map<String, Object>",
+      "description": "Additional arguments specified by the consumer."
+    }
+  }
+}

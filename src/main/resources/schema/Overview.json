@@ -1,0 +1,124 @@
+{
+  "type": "object",
+  "description": "Overview of the RabbitMQ cluster.",
+  "properties": {
+    "node": {
+      "type": "string"
+    },
+    "cluster_name": {
+      "type": "string",
+      "description": "The name of the RabbitMQ cluster."
+    },
+    "rabbitmq_version": {
+      "type": "string",
+      "description": "The version of this RabbitMQ service."
+    },
+    "management_version": {
+      "type": "string",
+      "description": "The version of the RabbitMQ management API."
+    },
+    "rates_mode": {
+      "type": "string",
+      "enum": [
+        "basic",
+        "detailed",
+        "none"
+      ]
+    },
+    "exchange_types": {
+      "type": "array",
+      "items": {
+        "$ref": "Description.json"
+      }
+    },
+    "erlang_version": {
+      "type": "string",
+      "description": "The version of Erlang used to run this RabbitMQ service."
+    },
+    "erlang_full_version": {
+      "type": "string",
+      "description": "The full version of Erlang used to run this RabbitMQ service."
+    },
+    "message_stats": {
+      "$ref": "MessageStatistics.json"
+    },
+    "queue_totals": {
+      "type": "object",
+      "description": "Totals of how many messages can be found in each message state.",
+      "properties": {
+        "messages": {
+          "type": "integer"
+        },
+        "messages_details": {
+          "$ref": "Details.json"
+        },
+        "messages_ready": {
+          "type": "integer"
+        },
+        "messages_ready_details": {
+          "$ref": "Details.json"
+        },
+        "messages_unacknowledged": {
+          "type": "integer"
+        },
+        "messages_unacknowledged_details": {
+          "$ref": "Details.json"
+        }
+      }
+    },
+    "object_totals": {
+      "type": "object",
+      "description": "Totals of various RabbitMQ entities.",
+      "properties": {
+        "channels": {
+          "type": "integer"
+        },
+        "connections": {
+          "type": "integer"
+        },
+        "consumers": {
+          "type": "integer"
+        },
+        "exchanges": {
+          "type": "integer"
+        },
+        "queues": {
+          "type": "integer"
+        }
+      }
+    },
+    "statistics_db_event_queue": {
+      "type": "integer"
+    },
+    "statistics_db_node": {
+      "type": "string"
+    },
+    "listeners": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Describes services that are listening to a RabbitMQ node.",
+        "properties": {
+          "node": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          },
+          "ip_address": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "contexts": {
+      "type": "array",
+      "items": {
+        "$ref": "Context.json"
+      }
+    }
+  }
+}

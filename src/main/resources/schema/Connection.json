@@ -1,0 +1,139 @@
+{
+  "type": "object",
+  "description": "Describes a client connection to the RabbitMQ service.",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "node": {
+      "type": "string"
+    },
+    "user": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string"
+    },
+    "port": {
+      "type": "integer"
+    },
+    "peer_host": {
+      "type": "string"
+    },
+    "peer_port": {
+      "type": "integer"
+    },
+    "protocol": {
+      "type": "string"
+    },
+    "vhost": {
+      "type": "string"
+    },
+    "channels": {
+      "type": "integer"
+    },
+    "channel_max": {
+      "type": "integer"
+    },
+    "connected_at": {
+      "type": "integer"
+    },
+    "state": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "recv_cnt": {
+      "type": "integer"
+    },
+    "recv_oct": {
+      "type": "integer"
+    },
+    "recv_oct_details": {
+      "$ref": "Details.json"
+    },
+    "send_cnt": {
+      "type": "integer"
+    },
+    "send_oct": {
+      "type": "integer"
+    },
+    "send_oct_details": {
+      "$ref": "Details.json"
+    },
+    "send_pend": {
+      "type": "integer"
+    },
+    "frame_max": {
+      "type": "integer"
+    },
+    "timeout": {
+      "type": "integer"
+    },
+    "auth_mechanism": {
+      "type": "string"
+    },
+    "peer_cert_issuer": {
+      "type": "string"
+    },
+    "peer_cert_subject": {
+      "type": "string"
+    },
+    "peer_cert_validity": {
+      "type": "string"
+    },
+    "ssl": {
+      "type": "boolean"
+    },
+    "ssl_cipher": {
+      "type": "string"
+    },
+    "ssl_hash": {
+      "type": "string"
+    },
+    "ssl_key_exchange": {
+      "type": "string"
+    },
+    "ssl_protocol": {
+      "type": "string"
+    },
+    "client_properties": {
+      "type": "object",
+      "properties": {
+        "product": {
+          "type": "string"
+        },
+        "information": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "capabilities": {
+          "type": "object",
+          "properties": {
+            "exchange_exchange_bindings": {
+              "type": "boolean"
+            },
+            "consumer_cancel_notify": {
+              "type": "boolean"
+            },
+            "publisher_confirms": {
+              "type": "boolean"
+            },
+            "basic.nack": {
+              "type": "boolean"
+            }
+          }
+        },
+        "copyright": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
