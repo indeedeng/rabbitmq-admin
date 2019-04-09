@@ -1,6 +1,18 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.0.1'
+    }
+}
+
 plugins {
     id 'java'
 }
+
+apply plugin: 'jsonschema2pojo'
 
 repositories {
     mavenCentral()
@@ -10,9 +22,16 @@ dependencies {
     // Third Party
     compile 'com.squareup.retrofit:converter-jackson:1.9.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'commons-lang:commons-lang:2.6'
 
     // Test Only
     testCompile 'junit:junit:4.12'
     testCompile 'org.easymock:easymock:3.6'
+}
+
+jsonSchema2Pojo {
+    includeAdditionalProperties = true
+    generateBuilders = true
+    targetPackage = 'com.indeed.rabbitmq.admin.pojo'
+    annotationStyle = 'jackson2'
+    useLongIntegers = true
 }

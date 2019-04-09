@@ -9,7 +9,7 @@
     },
     "arguments": {
       "type": "object",
-      "javaType": "java.util.Map<String, Object>",
+      "existingJavaType": "java.util.Map<String, Object>",
       "description": "Additional arguments to apply to the binding being created."
     }
   }

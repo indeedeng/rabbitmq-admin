@@ -51,7 +51,7 @@
     },
     "arguments": {
       "type": "object",
-      "javaType": "java.util.Map<String, Object>",
+      "existingJavaType": "java.util.Map<String, Object>",
       "description": "Additional arguments specified by the consumer."
     }
   }

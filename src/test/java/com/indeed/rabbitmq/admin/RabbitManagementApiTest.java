@@ -22,7 +22,6 @@ import com.indeed.rabbitmq.admin.pojo.ShovelArguments;
 import com.indeed.rabbitmq.admin.pojo.Status;
 import com.indeed.rabbitmq.admin.pojo.User;
 import com.indeed.rabbitmq.admin.pojo.VirtualHost;
-import org.apache.commons.lang.builder.EqualsBuilder;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -81,40 +80,6 @@ public class RabbitManagementApiTest {
         } else {
             return pattern.pattern();
         }
-    }
-
-    private static boolean equals(final Permission actual, final Permission expected) {
-        if (actual == expected) {
-            return true;
-        }
-        if (null == actual) {
-            return false;
-        }
-        return new EqualsBuilder().append(actual.getUser(), expected.getUser())
-                                  .append(actual.getVhost(), expected.getVhost())
-                                  .append(toString(actual.getConfigure()), toString(expected.getConfigure()))
-                                  .append(toString(actual.getRead()), toString(expected.getRead()))
-                                  .append(toString(actual.getWrite()), toString(expected.getWrite()))
-                                  .append(actual.getAdditionalProperties(), expected.getAdditionalProperties())
-                                  .isEquals();
-
-    }
-
-    private boolean equals(final Policy actual, final Policy expected) {
-        if (actual == expected) {
-            return true;
-        }
-        if (null == actual) {
-            return false;
-        }
-        return new EqualsBuilder().append(actual.getName(), expected.getName())
-                                  .append(actual.getVhost(), expected.getVhost())
-                                  .append(toString(actual.getPattern()), toString(expected.getPattern()))
-                                  .append(actual.getApplyTo(), expected.getApplyTo())
-                                  .append(actual.getDefinition(), expected.getDefinition())
-                                  .append(actual.getPriority(), expected.getPriority())
-                                  .append(actual.getAdditionalProperties(), expected.getAdditionalProperties())
-                                  .isEquals();
     }
 
     private RabbitManagementApi manager;
@@ -204,7 +169,7 @@ public class RabbitManagementApiTest {
 
     private boolean hasUserPermission(final Permission permission, final String user) {
         for (final Permission element : manager.listUserPermissions(user)) {
-            if (equals(permission, element)) {
+            if (permission.equals(element)) {
                 return true;
             }
         }
@@ -342,7 +307,7 @@ public class RabbitManagementApiTest {
 
     private boolean hasPermission(final Permission permission) {
         for (final Permission element : manager.listPermissions()) {
-            if (equals(element, permission)) {
+            if (element.equals(permission)) {
                 return true;
             }
         }
@@ -351,7 +316,7 @@ public class RabbitManagementApiTest {
 
     private boolean hasVirtualHostPermission(final Permission permission, final String virtualHost) {
         for (final Permission element : manager.listPermissions(virtualHost)) {
-            if (equals(element, permission)) {
+            if (element.equals(permission)) {
                 return true;
             }
         }
@@ -501,7 +466,7 @@ public class RabbitManagementApiTest {
         final Permission permission = configureTestVirtualHost();
 
         permission.withUser(USERNAME).withVhost(VIRTUAL_HOST);
-        assertTrue(equals(permission, manager.getPermission(VIRTUAL_HOST, USERNAME)));
+        assertEquals(permission, manager.getPermission(VIRTUAL_HOST, USERNAME));
         assertTrue(hasPermission(permission));
         assertTrue(hasUserPermission(permission, USERNAME));
         assertTrue(hasVirtualHostPermission(permission, VIRTUAL_HOST));
@@ -525,7 +490,7 @@ public class RabbitManagementApiTest {
         policy.withName("policy")
               .withPriority(0L) // default priority
               .withVhost(VIRTUAL_HOST);
-        assertTrue(equals(policy, manager.getPolicy(VIRTUAL_HOST, "policy")));
+        assertEquals(policy, manager.getPolicy(VIRTUAL_HOST, "policy"));
         assertTrue(hasPolicy("policy"));
         assertTrue(hasPolicy("policy", VIRTUAL_HOST));
         assertStatusCodeNoContent(manager.deletePolicy(VIRTUAL_HOST, "policy"));

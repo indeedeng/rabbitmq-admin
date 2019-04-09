@@ -28,7 +28,7 @@
     },
     "arguments": {
       "type": "object",
-      "javaType": "java.util.Map<String, Object>",
+      "existingJavaType": "java.util.Map<String, Object>",
       "description": "Additional arguments that may apply to this binding."
     },
     "properties_key": {
