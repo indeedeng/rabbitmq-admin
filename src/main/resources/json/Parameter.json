@@ -16,7 +16,7 @@
     },
     "value": {
       "type": "object",
-      "javaType": "java.util.Map<String, Object>",
+      "existingJavaType": "java.util.Map<String, Object>",
       "description": "The parameter value represented as a Map."
     }
   }
