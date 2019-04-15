@@ -35,3 +35,5 @@ jsonSchema2Pojo {
     annotationStyle = 'jackson2'
     useLongIntegers = true
 }
+
+ext['indeed.publish.name'] = 'rabbitmq-admin'
