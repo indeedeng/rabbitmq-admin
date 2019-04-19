@@ -10,6 +10,7 @@ buildscript {
 
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 apply plugin: 'jsonschema2pojo'
@@ -34,6 +35,18 @@ jsonSchema2Pojo {
     targetPackage = 'com.indeed.rabbitmq.admin.pojo'
     annotationStyle = 'jackson2'
     useLongIntegers = true
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.indeed'
+            artifactId = 'rabbitmq-admin'
+            version = '0.0.2-SNAPSHOT'
+
+            from components.java
+        }
+    }
 }
 
 ext['indeed.publish.name'] = 'rabbitmq-admin'
