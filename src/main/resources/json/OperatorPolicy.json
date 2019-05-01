@@ -18,10 +18,12 @@
     "apply-to": {
       "type": "string",
       "enum": ["queues"],
+      "default": "queues",
       "description": "Indicates which entities to which this operator policy applies (only 'queues')"
     },
-    "operator-policy-definition": {
+    "definition": {
       "type": "object",
+      "javaName": "operator-policy-definition",
       "description": "The definitions to apply to a RabbitMQ operator policy.",
       "properties": {
         "expires": {

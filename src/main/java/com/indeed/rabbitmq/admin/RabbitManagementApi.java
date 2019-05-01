@@ -23,6 +23,7 @@ import retrofit.client.Response;
 import retrofit.http.Body;
 import retrofit.http.DELETE;
 import retrofit.http.GET;
+import retrofit.http.Header;
 import retrofit.http.Headers;
 import retrofit.http.POST;
 import retrofit.http.PUT;
@@ -594,6 +595,7 @@ public interface RabbitManagementApi {
      * @return an HTTP response.
      */
     @PUT("/api/operator-policies/{vhost}/{name}")
+    @Headers("Content-Type: application/json")
     Response createOperatorPolicy(@Path("vhost") String vhost, @Path("name") String name, @Body OperatorPolicy policy);
 
     /**
