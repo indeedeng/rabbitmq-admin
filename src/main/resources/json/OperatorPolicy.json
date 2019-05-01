@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "description": "Describes a RabbitMQ operator policy on a set of queues.",
+  "properties": {
+    "vhost": {
+      "type": "string",
+      "description": "The virtual host that contains this operator policy."
+    },
+    "name": {
+      "type": "string",
+      "description": "The unique name of this operator policy."
+    },
+    "pattern": {
+      "type": "string",
+      "format": "regex",
+      "description": "A pattern that matches the RabbitMQ queues to which this operator policy applies."
+    },
+    "apply-to": {
+      "type": "string",
+      "enum": ["queues"],
+      "description": "Indicates which entities to which this operator policy applies (only 'queues')"
+    },
+    "operator-policy-definition": {
+      "type": "object",
+      "description": "The definitions to apply to a RabbitMQ operator policy.",
+      "properties": {
+        "expires": {
+          "type": "integer",
+          "description": "Remove queue if it remains unused for this number of milliseconds."
+        },
+        "max-length": {
+          "type": "integer",
+          "description": "Maximum number of messages in a queue."
+        },
+        "max-length-bytes": {
+          "type": "integer",
+          "description": "Maximum number of bytes in a queue."
+        },
+        "message-ttl": {
+          "type": "integer",
+          "title": "Remove message if it remains in the queue for this number of milliseconds.",
+          "description": "Sets the TTL on messages in a queue. Policy must be attached to a queue.\nThese messages are routed as dead letter messages after expiration."
+        }
+      }
+    },
+    "priority": {
+      "type": "integer",
+      "description": "The policy priority level."
+    }
+  }
+}
