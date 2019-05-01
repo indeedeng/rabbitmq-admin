@@ -9,6 +9,7 @@ import com.indeed.rabbitmq.admin.pojo.Consumer;
 import com.indeed.rabbitmq.admin.pojo.Exchange;
 import com.indeed.rabbitmq.admin.pojo.Extension;
 import com.indeed.rabbitmq.admin.pojo.Node;
+import com.indeed.rabbitmq.admin.pojo.OperatorPolicy;
 import com.indeed.rabbitmq.admin.pojo.Overview;
 import com.indeed.rabbitmq.admin.pojo.Parameter;
 import com.indeed.rabbitmq.admin.pojo.Permission;
@@ -556,6 +557,54 @@ public interface RabbitManagementApi {
      */
     @DELETE("/api/policies/{vhost}/{name}")
     Response deletePolicy(@Path("vhost") String vhost, @Path("name") String name);
+
+    // Operator Policies
+
+    /**
+     * Returns a list of all RabbitMQ operator policies.
+     * @return a list of all defined operator policies.
+     */
+    @GET("/api/operator-policies")
+    List<OperatorPolicy> listOperatorPolicies();
+
+    /**
+     * Returns a list of all operator policies defined in the specified virtual host.
+     * @param vhost a RabbitMQ virtual host.
+     * @return a list of all operator policies defined.
+     */
+    @GET("/api/operator-policies/{vhost}")
+    List<OperatorPolicy> listOperatorPolicies(@Path("vhost") String vhost);
+
+    /**
+     * Returns a operator policy by name.
+     *
+     * @param vhost a RabbitMQ virtual host.
+     * @param name the name of the operator  policy to retrieve.
+     * @return the operator policy metadata.
+     */
+    @GET("/api/operator-policies/{vhost}/{name}")
+    OperatorPolicy getOperatorPolicy(@Path("vhost") String vhost, @Path("name") String name);
+
+    /**
+     * Creates a new operator policy.
+     *
+     * @param vhost a RabbitMQ virtual host.
+     * @param name the operator policy name.
+     * @param policy the operator policy details
+     * @return an HTTP response.
+     */
+    @PUT("/api/operator-policies/{vhost}/{name}")
+    Response createOperatorPolicy(@Path("vhost") String vhost, @Path("name") String name, @Body OperatorPolicy policy);
+
+    /**
+     * Destroys an existing operator policy.
+     *
+     * @param vhost a RabbitMQ virtual host.
+     * @param name the operator policy name.
+     * @return an HTTP response.
+     */
+    @DELETE("/api/operator-policies/{vhost}/{name}")
+    Response deleteOperatorPolicy(@Path("vhost") String vhost, @Path("name") String name);
 
     // Queues
 
