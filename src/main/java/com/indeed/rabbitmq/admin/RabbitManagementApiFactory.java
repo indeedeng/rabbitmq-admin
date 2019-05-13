@@ -1,13 +1,13 @@
 package com.indeed.rabbitmq.admin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import retrofit.RestAdapter;
-import retrofit.converter.JacksonConverter;
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.net.URI;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
-import static java.util.Objects.requireNonNull;
 
 /**
  * Factory class used to construct the {@code RabbitManagementApi} proxy.
@@ -27,15 +27,18 @@ public class RabbitManagementApiFactory {
         final ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        final RestAdapter.Builder builder = new RestAdapter.Builder();
-        builder.setConverter(new JacksonConverter(objectMapper))
-               .setEndpoint(requireNonNull(uri).toASCIIString());
+        final OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder();
 
         if ((null != username) && (null != password)) {
-            builder.setRequestInterceptor(new AuthenticationInterceptor(username, password));
+            okHttpBuilder.addInterceptor(new AuthenticationInterceptor(username, password));
         }
 
-        return builder.build().create(RabbitManagementApi.class);
+        return new Retrofit.Builder()
+                .addConverterFactory(JacksonConverterFactory.create(objectMapper))
+                .baseUrl(uri.toASCIIString())
+                .client(okHttpBuilder.build())
+                .build()
+                .create(RabbitManagementApi.class);
     }
 
     public static RabbitManagementApi newInstance(final URI uri) {

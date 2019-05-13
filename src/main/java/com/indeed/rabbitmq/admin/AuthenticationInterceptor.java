@@ -1,7 +1,12 @@
 package com.indeed.rabbitmq.admin;
 
-import retrofit.RequestInterceptor;
+import okhttp3.Interceptor;
+import okhttp3.Request;
+import okhttp3.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.Base64;
 
 import static java.nio.charset.StandardCharsets.US_ASCII;
@@ -12,7 +17,9 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
  *
  * @author Kevin Sitze (kevins@indeed.com)
  */
-public class AuthenticationInterceptor implements RequestInterceptor {
+public class AuthenticationInterceptor implements Interceptor {
+
+    final Logger log = LoggerFactory.getLogger(AuthenticationInterceptor.class);
 
     public static String createAuthorizationToken(final String username, final String password) {
         return "Basic " + new String(Base64.getEncoder().encode((username + ':' + password).getBytes(US_ASCII)));
@@ -29,7 +36,16 @@ public class AuthenticationInterceptor implements RequestInterceptor {
     }
 
     @Override
-    public void intercept(final RequestFacade requestFacade) {
-        requestFacade.addHeader("Authorization", authorizationToken);
+    public Response intercept(Chain chain) throws IOException {
+        final Request original = chain.request();
+
+        // Customize the request
+        final Request request = original.newBuilder()
+                .header("Authorization", authorizationToken)
+                .build();
+
+        final Response response = chain.proceed(request);
+
+        return response;
     }
 }
