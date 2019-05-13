@@ -32,17 +32,17 @@ import retrofit2.http.Path;
 import java.util.List;
 
 /**
- * <p>>RabbitMQ server 3.6.1 has a total of 74 APIs, not all of which are
- * implemented here. Missing APIs include:</p>>
- * <ul>>
- * <li>>{@code Definitions getDefinitions()}</li>>
- * <li>>{@code Definitions getDefinitions(String vhost)}</li>>
- * <li>>{@code Call<ResponseBody> setDefinitions(Definitions definitions)}</li>>
- * <li>>{@code Call<ResponseBody> setDefinitions(String vhost, Definitions definitions)}</li>>
- * <li>>{@code Call<ResponseBody> publishMessage(String vhost, String exchange, Message message)}</li>>
- * <li>>{@code Call<ResponseBody> setAction(String vhost, String queue, Action action}</li>>
- * <li>>{@code Message getMessage(String vhost, String queue}</li>>
- * </ul>>
+ * <p>RabbitMQ server 3.6.1 has a total of 74 APIs, not all of which are
+ * implemented here. Missing APIs include:</p>
+ * <ul>
+ * <li>{@code Definitions getDefinitions()}</li>
+ * <li>{@code Definitions getDefinitions(String vhost)}</li>
+ * <li>{@code Call<ResponseBody> setDefinitions(Definitions definitions)}</li>
+ * <li>{@code Call<ResponseBody> setDefinitions(String vhost, Definitions definitions)}</li>
+ * <li>{@code Call<ResponseBody> publishMessage(String vhost, String exchange, Message message)}</li>
+ * <li>{@code Call<ResponseBody> setAction(String vhost, String queue, Action action}</li>
+ * <li>{@code Message getMessage(String vhost, String queue}</li>
+ * </ul>
  *
  * @author Kevin Sitze (kevins@indeed.com)
  */
@@ -75,7 +75,7 @@ public interface RabbitManagementApi {
     /**
      * Sets the name of the cluster.
      * @param name the cluster name.
-     * @return the HTTP Call<ResponseBody>.
+     * @return the HTTP ResponseBody.
      */
     @PUT("api/cluster-name")
     Call<ResponseBody> setClusterName(@Body ClusterName name);
@@ -146,7 +146,7 @@ public interface RabbitManagementApi {
      * @param exchange the name of the source exchange.
      * @param queue the name of the target queue.
      * @param bind the binding key and any binding arguments.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @POST("api/bindings/{vhost}/e/{exchange}/q/{queue}")
     Call<ResponseBody> bindExchangeToQueue(@Path("vhost") String vhost, @Path("exchange") String exchange, @Path("queue") String queue, @Body Bind bind);
@@ -172,7 +172,7 @@ public interface RabbitManagementApi {
      * @param exchange the name of the source exchange.
      * @param queue the name of the target queue.
      * @param bindingKey the unique binding key.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/bindings/{vhost}/e/{exchange}/q/{queue}/{props}")
     Call<ResponseBody> deleteExchangeToQueueBinding(@Path("vhost") String vhost, @Path("exchange") String exchange, @Path("queue") String queue, @Path("props") String bindingKey);
@@ -196,7 +196,7 @@ public interface RabbitManagementApi {
      * @param source the source exchange.
      * @param destination the target exchange.
      * @param bind the binding key and any binding arguments.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @POST("api/bindings/{vhost}/e/{source}/e/{destination}")
     Call<ResponseBody> bindExchangeToExchange(@Path("vhost") String vhost, @Path("source") String source, @Path("destination") String destination, @Body Bind bind);
@@ -223,7 +223,7 @@ public interface RabbitManagementApi {
      * @param source the name of the source exchange.
      * @param destination the name of the target exchange.
      * @param bindingKey the unique binding key.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/bindings/{vhost}/e/{source}/e/{destination}/{props}")
     Call<ResponseBody> deleteExchangeToExchangeBinding(@Path("vhost") String vhost, @Path("source") String source, @Path("destination") String destination, @Path("props") String bindingKey);
@@ -289,7 +289,7 @@ public interface RabbitManagementApi {
     /**
      * Destroys the named connection.
      * @param name a connection name.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/connections/{name}")
     Call<ResponseBody> deleteConnection(@Path("name") String name);
@@ -355,7 +355,7 @@ public interface RabbitManagementApi {
      * @param vhost a RabbitMQ virtual host.
      * @param name the name of the exchange to create.
      * @param exchange the exchange metadata.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @PUT("api/exchanges/{vhost}/{name}")
     Call<ResponseBody> createExchange(@Path("vhost") String vhost, @Path("name") String name, @Body Exchange exchange);
@@ -364,7 +364,7 @@ public interface RabbitManagementApi {
      * Deletes an exchange in the specified virtual host.
      * @param vhost a RabbitMQ virtual host.
      * @param name the name of the exchange to destroy.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/exchanges/{vhost}/{name}")
     Call<ResponseBody> deleteExchange(@Path("vhost") String vhost, @Path("name") String name);
@@ -442,7 +442,7 @@ public interface RabbitManagementApi {
      * @param component the name of a RabbitMQ component.
      * @param name the parameter name.
      * @param parameter the parameter metadata.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @PUT("api/parameters/{component}/{vhost}/{name}")
     Call<ResponseBody> createParameter(@Path("vhost") String vhost, @Path("component") String component, @Path("name") String name, @Body Parameter parameter);
@@ -453,7 +453,7 @@ public interface RabbitManagementApi {
      * @param vhost a RabbitMQ virtual host.
      * @param component the name of a RabbitMQ component.
      * @param name the name of the parameter to destroy.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/parameters/{component}/{vhost}/{name}")
     Call<ResponseBody> deleteParameter(@Path("vhost") String vhost, @Path("component") String component, @Path("name") String name);
@@ -497,7 +497,7 @@ public interface RabbitManagementApi {
      * @param vhost a RabbitMQ virtual host.
      * @param user the user name.
      * @param permission the permissions allocated to the user.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @PUT("api/permissions/{vhost}/{user}")
     Call<ResponseBody> createPermission(@Path("vhost") String vhost, @Path("user") String user, @Body Permission permission);
@@ -506,7 +506,7 @@ public interface RabbitManagementApi {
      * Destroys an user authorization.
      * @param vhost a RabbitMQ virtual host.
      * @param user the user name.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/permissions/{vhost}/{user}")
     Call<ResponseBody> deletePermission(@Path("vhost") String vhost, @Path("user") String user);
@@ -544,7 +544,7 @@ public interface RabbitManagementApi {
      * @param vhost a RabbitMQ virtual host.
      * @param name the policy name.
      * @param policy the policy details
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @PUT("api/policies/{vhost}/{name}")
     Call<ResponseBody> createPolicy(@Path("vhost") String vhost, @Path("name") String name, @Body Policy policy);
@@ -554,7 +554,7 @@ public interface RabbitManagementApi {
      *
      * @param vhost a RabbitMQ virtual host.
      * @param name the policy name.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/policies/{vhost}/{name}")
     Call<ResponseBody> deletePolicy(@Path("vhost") String vhost, @Path("name") String name);
@@ -592,7 +592,7 @@ public interface RabbitManagementApi {
      * @param vhost a RabbitMQ virtual host.
      * @param name the operator policy name.
      * @param policy the operator policy details
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @PUT("api/operator-policies/{vhost}/{name}")
     @Headers("Content-Type: application/json")
@@ -603,7 +603,7 @@ public interface RabbitManagementApi {
      *
      * @param vhost a RabbitMQ virtual host.
      * @param name the operator policy name.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/operator-policies/{vhost}/{name}")
     Call<ResponseBody> deleteOperatorPolicy(@Path("vhost") String vhost, @Path("name") String name);
@@ -640,7 +640,7 @@ public interface RabbitManagementApi {
      * @param vhost a RabbitMQ virtual host.
      * @param name the queue name.
      * @param queue the queue metadata.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @PUT("api/queues/{vhost}/{name}")
     Call<ResponseBody> createQueue(@Path("vhost") String vhost, @Path("name") String name, @Body Queue queue);
@@ -649,7 +649,7 @@ public interface RabbitManagementApi {
      * Destroys a queue in the specified virtual host.
      * @param vhost a RabbitMQ virtual host.
      * @param name the name of the queue to remove.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/queues/{vhost}/{name}")
     Call<ResponseBody> deleteQueue(@Path("vhost") String vhost, @Path("name") String name);
@@ -658,7 +658,7 @@ public interface RabbitManagementApi {
      * Destroys all messages in a queue.
      * @param vhost a RabbitMQ virtual host.
      * @param name the name of the queue to purge.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/queues/{vhost}/{name}/contents")
     Call<ResponseBody> purgeQueue(@Path("vhost") String vhost, @Path("name") String name);
@@ -684,7 +684,7 @@ public interface RabbitManagementApi {
      * Define a new user on the current RabbitMQ cluster.
      * @param name the user name.
      * @param user the user metadata.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @PUT("api/users/{user}")
     Call<ResponseBody> createUser(@Path("user") String name, @Body User user);
@@ -692,7 +692,7 @@ public interface RabbitManagementApi {
     /**
      * Deletes the named user from the current RabbitMQ server.
      * @param name the user name.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/users/{user}")
     Call<ResponseBody> deleteUser(@Path("user") String name);
@@ -724,7 +724,7 @@ public interface RabbitManagementApi {
     /**
      * Create a new virtual host.
      * @param vhost the virtual host.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @PUT("api/vhosts/{vhost}")
     @Headers("Content-Type: application/json")
@@ -733,7 +733,7 @@ public interface RabbitManagementApi {
     /**
      * Delete an existing virtual host.
      * @param vhost the virtual host to remove.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/vhosts/{vhost}")
     Call<ResponseBody> deleteVirtualHost(@Path("vhost") String vhost);
@@ -772,7 +772,7 @@ public interface RabbitManagementApi {
      * @param vhost a RabbitMQ virtual host.
      * @param name the shovel name.
      * @param shovel the shovel metadata.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @PUT("api/parameters/shovel/{vhost}/{name}")
     Call<ResponseBody> createShovel(@Path("vhost") String vhost, @Path("name") String name, @Body Shovel shovel);
@@ -782,7 +782,7 @@ public interface RabbitManagementApi {
      *
      * @param vhost a RabbitMQ virtual host.
      * @param name the name of the shovel to destroy.
-     * @return an HTTP Call<ResponseBody>.
+     * @return an HTTP ResponseBody.
      */
     @DELETE("api/parameters/shovel/{vhost}/{name}")
     Call<ResponseBody> deleteShovel(@Path("vhost") String vhost, @Path("name") String name);
