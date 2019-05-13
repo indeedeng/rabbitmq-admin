@@ -21,12 +21,16 @@ repositories {
 
 dependencies {
     // Third Party
-    compile 'com.squareup.retrofit:converter-jackson:1.9.0'
-    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'com.squareup.retrofit2:converter-jackson:2.5.0'
+    compile 'com.squareup.retrofit2:retrofit:2.5.0'
+    compile 'org.slf4j:slf4j-api:1.7.26'
 
     // Test Only
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.easymock:easymock:3.6'
+    testCompile 'org.mockito:mockito-core:2.24.0'
+    testCompile 'org.mockito:mockito-junit-jupiter:2.24.0'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.4.0'
+
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.4.0'
 }
 
 jsonSchema2Pojo {
@@ -37,12 +41,16 @@ jsonSchema2Pojo {
     useLongIntegers = true
 }
 
+test {
+    useJUnitPlatform()
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
             groupId = 'com.indeed'
             artifactId = 'rabbitmq-admin'
-            version = '0.0.2-SNAPSHOT'
+            version = '0.0.3-SNAPSHOT'
 
             from components.java
         }
