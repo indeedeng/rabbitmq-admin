@@ -50,7 +50,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'com.indeed'
             artifactId = 'rabbitmq-admin'
-            version = '0.0.3-SNAPSHOT'
+            version = '1.0.1-SNAPSHOT'
 
             from components.java
         }
