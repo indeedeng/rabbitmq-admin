@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/indeedeng/rabbitmq-admin.svg?branch=master)](https://travis-ci.org/indeedeng/rabbitmq-admin)
 ![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.indeed/rabbitmq-admin/badge.svg
 )
-![NetflixOSS Lifecycle](https://img.shields.io/osslifecycle/indeedeng/rabbitmq-admin.svg)
+![OSS Lifecycle](https://img.shields.io/osslifecycle/indeedeng/rabbitmq-admin.svg)
 
 A lightweight library used to communicate with the RabbitMQ Management API.
 
