@@ -1,5 +1,7 @@
 # rabbitmq-admin
 
+Status: **Indeed is no longer maintaining this application and the repo will be archived 2/22/21 **
+
 [![Build Status](https://travis-ci.org/indeedeng/rabbitmq-admin.svg?branch=master)](https://travis-ci.org/indeedeng/rabbitmq-admin)
 ![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.indeed/rabbitmq-admin/badge.svg
 )
